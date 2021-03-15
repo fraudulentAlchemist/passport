@@ -5,7 +5,7 @@ const userController = require("../controllers/userController");
 const githubLogin = new GitHubStrategy({
   clientID: "dfa266b7a9ab46874ead",
   clientSecret: "6be5cf6e6d53d6a667ce0e884cd67ee1fc768faf",
-  callbackURL: "http://localhost:000/auth/github/callback"
+  callbackURL: "http://localhost:8000/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
   User.findOrCreate({ githubId: profile.id }, function (err, user) {
