@@ -46,10 +46,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("hello")
-});
-
 app.use("/", indexRoute);
 app.use("/auth", authRoute);
 
