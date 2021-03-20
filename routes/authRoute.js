@@ -15,10 +15,10 @@ router.post(
   })
 );
 
-router.get('/auth/github',
+router.get('/github',
   passport2.authenticate('github'));
 
-router.get('/auth/github/callback', 
+router.get('/github/callback', 
   passport2.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect dashboard.
