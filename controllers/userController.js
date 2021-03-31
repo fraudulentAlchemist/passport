@@ -17,6 +17,25 @@ const getUserById = (id) => {
   }
   return null;
 };
+const findOrCreate = (gitUser, callback) => {
+  try {
+    let user = database.find((user) => {user.id == gitUser.githubId});
+    if (user) {
+      callback(null, user);
+    } else {
+      let newGitUser = {
+        id: gitUser.githubId,
+        name: gitUser.githubName,
+        email: null,
+        password: null,
+      };
+      database.push(newGitUser);
+      callback(null, newGitUser);
+    };
+  } catch (err) {
+    callback(err, null)
+  }
+};
 
 function isUserValid(user, password) {
   return user.password === password;
@@ -25,4 +44,5 @@ function isUserValid(user, password) {
 module.exports = {
   getUserByEmailIdAndPassword,
   getUserById,
+  findOrCreate,
 };

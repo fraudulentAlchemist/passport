@@ -8,7 +8,7 @@ const githubLogin = new GitHubStrategy({
   callbackURL: "http://localhost:8000/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
-  userController.findOrCreate({ githubId: profile.id }, function (err, user) {
+  userController.findOrCreate({ githubId: profile.id, githubName: profile.username }, function (err, user) {
     return cb(err, user);
   });
 }
